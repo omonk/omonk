@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
 const StyledRow = styled(Row)`
-  padding: ${remcalc(20)} 0;
+  padding: ${remcalc(20)} 0 ${remcalc(40)};
 `;
 
 const SiteTitle = styled.h1`

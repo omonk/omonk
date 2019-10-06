@@ -25,8 +25,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/assets/imgs`,
-        name: 'imgs',
+        path: `${__dirname}/src/images`,
+        name: 'images',
       },
     },
     {
@@ -40,6 +40,7 @@ module.exports = {
       options: {
         plugins: [
           'gatsby-remark-prismjs',
+          'gatsby-remark-figure-caption',
           {
             resolve: 'gatsby-remark-relative-images',
             options: {
@@ -49,9 +50,6 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
               maxWidth: 2048,
             },
           },
@@ -62,6 +60,12 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: './src/favicon.png',
       },
     },
   ],

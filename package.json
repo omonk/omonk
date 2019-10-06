@@ -34,6 +34,7 @@
     "react-typography": "^0.16.19",
     "remcalc": "^1.0.10",
     "styled-components": "^4.3.2",
+    "styled-components-breakpoint": "^2.1.1",
     "styled-reset": "^3.0.2",
     "typography": "^0.16.19",
     "typography-theme-grand-view": "^0.16.19",

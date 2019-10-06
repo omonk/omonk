@@ -3,6 +3,7 @@ title: 'VSCode - Making CSS snippet expansion work with Styled Components 💅'
 path: '/blog/vscode-css-snippets-expansion-with-styled-components'
 tags: ['VSCode', 'Developer Experience', 'Snippets']
 date: '2019-10-6'
+image: './images/preview.jpeg'
 ---
 
 ![Result](./images/result.png)

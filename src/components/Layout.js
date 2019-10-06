@@ -9,6 +9,10 @@ import theme from '../utils/theme';
 import Header from './Header';
 
 const GlobalStyle = createGlobalStyle`
+  body {
+    margin-bottom: ${remcalc(20)}
+  }
+  
   .blog-post-content {
     .gatsby-highlight {
       margin-bottom: ${remcalc(20)}

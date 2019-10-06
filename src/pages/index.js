@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import { FaGithub } from 'react-icons/fa';
 
 const WorkWrapper = styled.div`
@@ -39,10 +40,14 @@ const WorkExperience = ({ companyName, companyUrl, position, date, description }
 const ProfileImageWrapper = styled.div`
   border-radius: 50%;
   overflow: hidden;
+
+  ${breakpoint('sm')`
+    margin-bottom: ${remcalc(20)}
+  `}
 `;
 
 const ProfileRow = styled(Row)`
-  margin: ${remcalc(25)} 0 ${remcalc(30)};
+  margin-bottom: ${remcalc(30)};
 
   h2,
   p {
@@ -60,16 +65,16 @@ export default ({ data }) => {
     <Layout>
       <Grid>
         <ProfileRow middle="xs" as="section" aria-label="Profile">
-          <Col xs={4}>
+          <Col xs={5}>
             <ProfileImageWrapper>
               <Image fluid={profile.fluid} />
             </ProfileImageWrapper>
           </Col>
-          <Col>
+          <Col xs={12}>
             <h2>Senior Software Engineer</h2>
             <p>
               <a href="https://github.com/omonk" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
-                <FaGithub /> Github Profile
+                <FaGithub /> Github
               </a>
             </p>
           </Col>

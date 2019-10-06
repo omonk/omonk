@@ -14,17 +14,39 @@ const Date = styled.small`
   margin-bottom: ${remcalc(15)};
 `;
 
+const ImageWrapper = styled.div`
+  position: relative;
+  height: 0;
+  padding-bottom: 100%;
+  margin-bottom: ${remcalc(20)};
+
+  img {
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+  }
+`;
+
 const BlogPreview = ({ frontmatter, excerpt }) => {
-  const { path, title, date } = frontmatter;
+  const { path, title, date, image } = frontmatter;
 
   return (
-    <article>
-      <PostTitle>
-        <Link to={path}>{title}</Link>
-      </PostTitle>
-      <Date>{date}</Date>
-      <p>{excerpt}</p>
-    </article>
+    <>
+      <Col xs={5} sm={3}>
+        <ImageWrapper>
+          <img src={image.publicURL} alt={`Preview graphic for ${title}`} />
+        </ImageWrapper>
+      </Col>
+      <Col xs={12} sm={9}>
+        <article>
+          <PostTitle>
+            <Link to={path}>{title}</Link>
+          </PostTitle>
+          <Date>{date}</Date>
+          <p>{excerpt}</p>
+        </article>
+      </Col>
+    </>
   );
 };
 
@@ -38,13 +60,13 @@ export default ({ data }) => {
           <Col>
             <h1>Blog</h1>
           </Col>
-          <Col xs={12}>
-            {blogPosts &&
-              blogPosts.length > 0 &&
-              blogPosts.map(({ node }) => {
-                return <BlogPreview {...node} key={node.id} />;
-              })}
-          </Col>
+        </Row>
+        <Row as="article">
+          {blogPosts &&
+            blogPosts.length > 0 &&
+            blogPosts.map(({ node }) => {
+              return <BlogPreview {...node} key={node.id} />;
+            })}
         </Row>
       </Grid>
     </Layout>
@@ -61,6 +83,9 @@ export const query = graphql`
             title
             path
             date
+            image {
+              publicURL
+            }
           }
           excerpt
         }

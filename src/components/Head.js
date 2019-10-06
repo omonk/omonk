@@ -20,7 +20,7 @@ function Head({ description, lang, meta, keywords, title }) {
             <meta property="og:type" content="`website`" />
             <meta name="twitter:card" content="`summary`" />
             <meta name="twitter:title" content="title" />
-            <meta name="twitter:description" content="metaDescription" />
+            <meta name="twitter:description" content={metaDescription} />
             {keywords.length > 0 ? <meta name="keywords" content={keywords.join(`, `)} /> : null}
           </Helmet>
         );

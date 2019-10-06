@@ -1,18 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import Head from './Head';
-import Header from './Header';
 import theme from '../utils/theme';
 
-const Layout = ({ children, title = 'Traveling Ink' }) => {
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${({ theme }) => theme.colors.yellow};
+    color: ${({ theme }) => theme.colors.blue}
+  }
+`;
+
+const Layout = ({ children, title = 'Ollie Monk' }) => {
   return (
     <>
       <Head title={title} />
       <ThemeProvider theme={theme}>
         <>
-          <Header />
+          <GlobalStyle />
           {children}
         </>
       </ThemeProvider>

@@ -1,107 +1,101 @@
-import React from 'react';
+/* eslint-disable react/no-danger */
+import React, { Fragment } from 'react';
 import Layout from '../components/Layout';
+import { graphql } from 'gatsby';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
+import styled from 'styled-components';
+import { FaGithub } from 'react-icons/fa';
 
-export default () => {
+const WorkWrapper = styled.div`
+  h3,
+  h4 {
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+  }
+`;
+
+const WorkExperience = ({ companyName, companyUrl, position, date, description }) => (
+  <WorkWrapper>
+    <h3>
+      {companyUrl ? (
+        <a href={companyUrl} target="_blank" rel="noopener noreferrer">
+          {companyName}
+        </a>
+      ) : (
+        companyName
+      )}
+    </h3>
+    <h4>{position}</h4>
+    <p>
+      <small>{date}</small>
+    </p>
+
+    {description && <p dangerouslySetInnerHTML={{ __html: description }} />}
+  </WorkWrapper>
+);
+
+export default ({ data }) => {
+  const {
+    dataJson: { work, likes },
+  } = data;
   return (
     <Layout>
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdOffset={2}>
-            <Row>
-              <Col xs={12} as="section">
-                <h1>Ollie Monk</h1>
-                <h2>Senior Software Engineer</h2>
-              </Col>
-              <Col xs={12} md={6} as="section">
-                <h3>Work</h3>
+          <Col xs={12} as="section">
+            <h2>Senior Software Engineer</h2>
 
-                <h4>
-                  <a href="https://yld.io">Monk Development Ltd.</a>
-                </h4>
+            <p>
+              <a href="https://github.com/omonk" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
+                <FaGithub /> Github Profile
+              </a>
+            </p>
+          </Col>
+          <Col xs={12} sm={6} as="section">
+            <h2>Work</h2>
 
-                <h4>Lead Software Engineer</h4>
-                <p>May 2019 - Current</p>
+            {work &&
+              work.length > 0 &&
+              work.map((experience, idx, arr) => {
+                const isLast = idx === arr.length - 1;
+                return (
+                  <Fragment key={work.companyName}>
+                    <WorkExperience {...experience} />
+                    {!isLast && <hr />}
+                  </Fragment>
+                );
+              })}
+          </Col>
+          <Col xs={12} sm={6} as="section">
+            <h3>
+              Things I{' '}
+              <span role="img" aria-label="heart">
+                ♥️
+              </span>{' '}
+              <br />
+              <small>(in no specific order)</small>
+            </h3>
 
-                <p>
-                  Working with{' '}
-                  <a href="https://www.thetrainline.com" target="_blank" rel="noopener noreferrer">
-                    {' '}
-                    YLD
-                  </a>{' '}
-                  to manage delivery of their website project
-                </p>
-
-                <hr />
-
-                <h4>
-                  <a href="https://yld.io">YLD</a>
-                </h4>
-
-                <h4>Software Engineer II</h4>
-                <p>March 2018 - May 2019</p>
-
-                <p>
-                  Working with{' '}
-                  <a href="https://www.thetrainline.com" target="_blank" rel="noopener noreferrer">
-                    Trainline
-                  </a>{' '}
-                  and{' '}
-                  <a href="https://www.fye.com/" rel="noopener noreferrer" target="_blank">
-                    FYE
-                  </a>
-                </p>
-
-                <hr />
-
-                <h4>
-                  <a href="https://beamly.com">Beamly</a> - Software Engineer II
-                </h4>
-                <p>June 2016 - March 2018</p>
-
-                <hr />
-
-                <h4>
-                  <a href="https://www.tomandco.co.uk/">Tom and Co</a>
-                </h4>
-                <h4>Frontend Developer</h4>
-                <p>February 2014 - June 2016</p>
-              </Col>
-              <Col xs={12} md={6} as="section">
-                <h3>
-                  Things I{' '}
-                  <span role="img" aria-label="heart">
-                    ♥️
-                  </span>{' '}
-                  <br />
-                  <small>(in no specific order)</small>
-                </h3>
-
-                <ul>
-                  <li>NextJS</li>
-                  <li>Typescript</li>
-                  <li>Gatsby</li>
-                  <li>Healthy git processes</li>
-                  <li>Serverless</li>
-                  <li>JAMstack</li>
-                  <li>Wakeboarding</li>
-                  <li>Netlify</li>
-                  <li>React</li>
-                  <li>Cycling</li>
-                  <li>Lint on commit (w/ husky)</li>
-                  <li>Redux</li>
-                  <li>GraphQL w/ Apollo</li>
-                  <li>Unit tests w/ Mocha/ava/Jest</li>
-                  <li>NodeJS</li>
-                  <li>Conflict free rebasing</li>
-                  <li>Climbing</li>
-                  <li>ExpressJS</li>
-                </ul>
-              </Col>
-            </Row>
+            <ul>{likes && likes.length > 0 && likes.map(like => <li key={like}>{like}</li>)}</ul>
           </Col>
         </Row>
       </Grid>
     </Layout>
   );
 };
+
+export const pageQuery = graphql`
+  {
+    dataJson {
+      id
+      work {
+        companyName
+        companyUrl
+        position
+        date
+        description
+      }
+      likes
+    }
+  }
+`;

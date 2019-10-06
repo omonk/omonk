@@ -5,11 +5,17 @@ import { createGlobalStyle } from 'styled-components';
 
 import Head from './Head';
 import theme from '../utils/theme';
+import Header from './Header';
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${({ theme }) => theme.colors.yellow};
-    color: ${({ theme }) => theme.colors.blue}
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 0
   }
 `;
 
@@ -20,6 +26,7 @@ const Layout = ({ children, title = 'Ollie Monk' }) => {
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
+          <Header />
           {children}
         </>
       </ThemeProvider>

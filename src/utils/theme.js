@@ -8,4 +8,11 @@ export default {
   font: {
     primary: 'Share Tech Mono',
   },
+  flexboxgrid: {
+    container: {
+      sm: 46, // rem
+      md: 46, // rem
+      lg: 46, // rem
+    },
+  },
 };

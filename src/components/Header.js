@@ -1,26 +1,30 @@
 import React from 'react';
+import remcalc from 'remcalc';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 
-const Wrapper = styled.div`
-  background: ${({ theme }) => theme.colors.blue};
+const StyledRow = styled(Row)`
+  padding: ${remcalc(20)} 0;
 `;
 
-const Header = () => {
+const SiteTitle = styled.h1`
+  margin-bottom: 0;
+`;
+
+export default () => {
   return (
-    <Wrapper>
-      <Grid>
-        <Row between="xs" middle="xs">
-          <Col xs={12} md={6}>
-            <Link to="/">
-              <h2>Ollie Monk</h2>
-            </Link>
-          </Col>
-        </Row>
-      </Grid>
-    </Wrapper>
+    <Grid>
+      <StyledRow center="xs" between="xs" middle="xs" as="header">
+        <Col>
+          <Link to="/">
+            <SiteTitle>Ollie Monk</SiteTitle>
+          </Link>
+        </Col>
+        <Col>
+          <Link to="/blog">Blog</Link>
+        </Col>
+      </StyledRow>
+    </Grid>
   );
 };
-
-export default Header;

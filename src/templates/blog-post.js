@@ -12,7 +12,7 @@ const BlogPost = ({ data }) => {
       <Grid>
         <Row>
           <Col xs={12}>
-            <h1>blog post</h1>
+            <h1>{post.frontmatter.title}</h1>
             <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
           </Col>
         </Row>

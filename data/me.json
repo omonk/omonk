@@ -1,0 +1,49 @@
+{
+  "work": [
+    {
+      "companyName": "Monk Development Ltd.",
+      "position": "Lead Software Engineer",
+      "date": "May 2019 - Current",
+      "description": "Working with <a href=\"https://www.yld.io\" target=\"_blank\" rel=\"noopener noreferrer\">YLD</a> to manage delivery of their website project"
+    },
+    {
+      "companyName": "YLD",
+      "companyUrl": "https://yld.io",
+      "position": "Software Engineer II",
+      "date": "March 2018 - May 2019",
+      "description": "Working with <a href=\"https://www.thetrainline.com\" target=\"_blank\" rel=\"noopener noreferrer\">Trainline</a> and <a href=\"https://www.fye.com/\" rel=\"noopener noreferrer\" target=\"_blank\">FYE</a>"
+    },
+    {
+      "companyName": "Beamly",
+      "companyUrl": "https://beamly.com",
+      "position": "Software Engineer II",
+      "date": "June 2016 - March 2018"
+    },
+    {
+      "companyName": "Tom and Co",
+      "companyUrl": "https://www.tomandco.co.uk/",
+      "position": "Frontend Developer",
+      "date": "February 2014 - June 2016"
+    }
+  ],
+  "likes": [
+    "NextJS",
+    "Typescript",
+    "Gatsby",
+    "Healthy git processes",
+    "Serverless",
+    "JAMstack",
+    "Wakeboarding",
+    "Netlify",
+    "React",
+    "Cycling",
+    "Lint on commit (w/ husky)",
+    "Redux",
+    "GraphQL w/ Apollo",
+    "Unit tests w/ Mocha/ava/Jest",
+    "NodeJS",
+    "Conflict free rebasing",
+    "Climbing",
+    "ExpressJS"
+  ]
+}

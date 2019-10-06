@@ -7,6 +7,8 @@
 const { resolve } = require('path');
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
+
+  // Blog Posts
   const { data, error } = await graphql(`
     query {
       allMarkdownRemark {
@@ -36,7 +38,6 @@ exports.createPages = async ({ actions, graphql }) => {
     const prev = index === 0 ? null : posts[index - 1].node;
     const next = index === posts.length - 1 ? null : posts[index + 1].node;
 
-    console.log(node.frontmatter.path);
     createPage({
       path: node.frontmatter.path,
       component: blogPostTemplate,

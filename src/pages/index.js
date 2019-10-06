@@ -1,5 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { Fragment } from 'react';
+import Image from 'gatsby-image';
+import remcalc from 'remcalc';
 import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import { Grid, Row, Col } from 'react-styled-flexboxgrid';
@@ -34,24 +36,46 @@ const WorkExperience = ({ companyName, companyUrl, position, date, description }
   </WorkWrapper>
 );
 
+const ProfileImageWrapper = styled.div`
+  border-radius: 50%;
+  overflow: hidden;
+`;
+
+const ProfileRow = styled(Row)`
+  margin: ${remcalc(25)} 0 ${remcalc(30)};
+
+  h2,
+  p {
+    margin-bottom: ${remcalc(15)};
+  }
+`;
+
 export default ({ data }) => {
   const {
     dataJson: { work, likes },
+    profile: { childImageSharp: profile },
   } = data;
+
   return (
     <Layout>
       <Grid>
-        <Row>
-          <Col xs={12} as="section">
+        <ProfileRow middle="xs" as="section" aria-label="Profile">
+          <Col xs={4}>
+            <ProfileImageWrapper>
+              <Image fluid={profile.fluid} />
+            </ProfileImageWrapper>
+          </Col>
+          <Col>
             <h2>Senior Software Engineer</h2>
-
             <p>
               <a href="https://github.com/omonk" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
                 <FaGithub /> Github Profile
               </a>
             </p>
           </Col>
-          <Col xs={12} sm={6} as="section">
+        </ProfileRow>
+        <Row>
+          <Col xs={12} sm={6} as="section" aria-label="Work Experience">
             <h2>Work</h2>
 
             {work &&
@@ -66,7 +90,7 @@ export default ({ data }) => {
                 );
               })}
           </Col>
-          <Col xs={12} sm={6} as="section">
+          <Col xs={12} sm={6} as="section" aria-label="Interests">
             <h3>
               Things I{' '}
               <span role="img" aria-label="heart">
@@ -86,6 +110,14 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
   {
+    profile: file(relativePath: { eq: "profile.jpg" }) {
+      publicURL
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     dataJson {
       id
       work {

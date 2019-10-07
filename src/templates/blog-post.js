@@ -15,12 +15,14 @@ const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
 
   const {
-    frontmatter: { title, tags, date },
+    frontmatter: { title, tags, date, image },
+    excerpt,
     html,
   } = post;
 
+  console.log({ a: image.publicURL });
   return (
-    <Layout>
+    <Layout title={`${title} | Ollie Monk`} description={excerpt} image={image.publicURL}>
       <Grid>
         <Row>
           <Col xs={12}>
@@ -67,7 +69,11 @@ export const pageQuery = graphql`
         tags
         date
         title
+        image {
+          publicURL
+        }
       }
+      excerpt
       html
     }
   }

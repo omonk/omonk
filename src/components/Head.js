@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import profile from '../images/profile.jpg';
 
-function Head({ description, lang, meta, keywords, title }) {
+function Head({ description, lang, keywords, title, image }) {
+  const ogImage = image ? image : profile;
   return (
     <StaticQuery
       query={detailsQuery}
@@ -12,14 +14,14 @@ function Head({ description, lang, meta, keywords, title }) {
         return (
           <Helmet>
             <html lang="en" />
-            <title>{title}</title>
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            <title>{title || data.site.siteMetadata.title}</title>
             <meta name="description" content={metaDescription} />
-            <meta property="og:title" content="title" />
+            <meta property="og:title" content={title} />
             <meta property="og:description" content={metaDescription} />
-            <meta property="og:type" content="`website`" />
-            <meta name="twitter:card" content="`summary`" />
-            <meta name="twitter:title" content="title" />
+            <meta property="og:type" content="website" />
+            <meta property="og:image" content={ogImage} />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={metaDescription} />
             {keywords.length > 0 ? <meta name="keywords" content={keywords.join(`, `)} /> : null}
           </Helmet>
@@ -31,14 +33,12 @@ function Head({ description, lang, meta, keywords, title }) {
 
 Head.defaultProps = {
   lang: `en`,
-  meta: [],
   keywords: [],
 };
 
 Head.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
 };

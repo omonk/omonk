@@ -90,7 +90,7 @@ const Contact = ({ data }) => {
   };
 
   return (
-    <Layout>
+    <Layout title="Contact | Ollie Monk">
       <Grid>
         <Row>
           <Col xs={12}>

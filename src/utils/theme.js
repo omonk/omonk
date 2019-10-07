@@ -14,9 +14,9 @@ export default {
   },
   flexboxgrid: {
     container: {
-      sm: 46, // rem
-      md: 46, // rem
-      lg: 46, // rem
+      sm: 46,
+      md: 46,
+      lg: 46,
     },
   },
 };

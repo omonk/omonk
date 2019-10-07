@@ -1,42 +1,38 @@
 import React from 'react';
-import { FaGithub } from 'react-icons/fa';
+import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 import styled from 'styled-components';
+import remcalc from 'remcalc';
 
-const Link = styled.a`
-  color: inherit;
-  font-weight: bold;
-  transition: 175ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
-  text-decoration: none;
-  font-size: 14;
-  padding: 2px;
-  margin: 2px;
-  :last-child {
-    padding: 12px;
-  }
+const Wrapper = styled.footer`
+  margin-bottom: ${remcalc(25)};
+  padding-top: ${remcalc(25)};
 `;
 
 const Footer = () => {
-  const { url } = {};
-
   return (
-    <div
-      style={{
-        marginTop: 'auto',
-        padding: '1rem',
-        borderTop: '1px solid grey',
-      }}
-    >
-      <Link href={url} rel="noopener noreferrer" target="_blank">
-        <FaGithub
-          size={16}
-          css={{
-            marginRight: '0.5rem',
-            verticalAlign: 'sub',
-          }}
-        />
-        <span>Source on Github</span>
-      </Link>
-    </div>
+    <Wrapper>
+      <hr />
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <code>
+              Built with{' '}
+              <a target="_blank" rel="noopener noreferrer" href="https://www.gatsbyjs.org/">
+                GatsbyJS
+              </a>{' '}
+              / Deployed with{' '}
+              <a target="_blank" rel="noopener noreferrer" href="https://netlify.com">
+                Netlify
+              </a>{' '}
+              /{' '}
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/omonk/omonk">
+                Github Repo
+              </a>
+            </code>
+          </Col>
+        </Row>
+      </Grid>
+    </Wrapper>
   );
 };
 

@@ -8,7 +8,7 @@ export default ({ data }) => {
   const blogPosts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout>
+    <Layout title="Blog | Ollie Monk">
       <Grid>
         <Row>
           <Col>

@@ -23,7 +23,7 @@ const SiteTitle = styled.h1`
   margin-bottom: 0;
 `;
 
-const NavList = styled.ul`
+const NavList = styled.ol`
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -35,6 +35,7 @@ const NavItem = styled.li`
 
 const StyledLink = styled(Link)`
   padding: ${remcalc(15)} ${remcalc(20)};
+  display: block;
   transition: background-color ease-in 200ms;
 
   :hover {
@@ -42,26 +43,30 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const DesktopNav = styled(Col)``;
+
 export default () => {
   return (
     <Grid>
       <StyledRow center="xs" between="xs" middle="xs" as="header">
         <Col>
-          <Link to="/">
+          <Link to="/" style={{ display: 'block' }}>
             <SiteTitle>Ollie Monk</SiteTitle>
           </Link>
         </Col>
-        <Col>
+        <DesktopNav>
           <nav>
             <NavList>
-              {navItems.map(({ to, label }) => (
+              {navItems.map(({ to, label }, idx) => (
                 <NavItem key={to}>
-                  <StyledLink to={to}>{label}</StyledLink>
+                  <StyledLink first={idx === 0} to={to}>
+                    {label}
+                  </StyledLink>
                 </NavItem>
               ))}
             </NavList>
           </nav>
-        </Col>
+        </DesktopNav>
       </StyledRow>
     </Grid>
   );

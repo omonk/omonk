@@ -153,7 +153,11 @@ const Contact = ({ data }) => {
 
 export const query = graphql`
   {
-    allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date] }) {
+    allMarkdownRemark(
+      limit: 3
+      sort: { fields: [frontmatter___date] }
+      filter: { frontmatter: { publish: { eq: true } } }
+    ) {
       edges {
         node {
           id

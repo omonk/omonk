@@ -48,7 +48,7 @@ const BlogPost = ({ data }) => {
                 }
               </p>
               <p>
-                Check out my work experience and interestes <Link to="/">here</Link>
+                Check out my work experience and interests <Link to="/">here</Link>
               </p>
               <p>
                 Shoot me a message <Link to="/contact">here</Link>

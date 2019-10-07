@@ -4,6 +4,7 @@ path: '/blog/vscode-css-snippets-expansion-with-styled-components'
 tags: ['VSCode', 'Developer Experience', 'Snippets']
 date: '2019-10-6'
 image: './images/preview.jpeg'
+publish: true
 ---
 
 ![Result](./images/result.png)

@@ -11,7 +11,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // Blog Posts
   const { data, error } = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: { frontmatter: { publish: { eq: true } } }) {
         edges {
           node {
             id

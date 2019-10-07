@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
+import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 import remcalc from 'remcalc';
 
 import Head from './Head';
@@ -45,6 +46,29 @@ const Layout = ({ children, title = 'Ollie Monk' }) => {
           <GlobalStyle />
           <Header />
           {children}
+          <hr />
+          <footer>
+            <Grid>
+              <Row>
+                <Col xs={12}>
+                  <code>
+                    Built with{' '}
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.gatsbyjs.org/">
+                      GatsbyJS
+                    </a>{' '}
+                    / Deployed with{' '}
+                    <a target="_blank" rel="noopener noreferrer" href="https://netlify.com">
+                      Netlify
+                    </a>{' '}
+                    /{' '}
+                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/omonk/omonk">
+                      Github Repo
+                    </a>
+                  </code>
+                </Col>
+              </Row>
+            </Grid>
+          </footer>
         </>
       </ThemeProvider>
     </>

@@ -1,3 +1,2 @@
 [build]
-  functions = "./handlers-build"
   command = "yarn build"

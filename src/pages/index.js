@@ -65,12 +65,12 @@ export default ({ data }) => {
     <Layout>
       <Grid>
         <ProfileRow middle="xs" as="section" aria-label="Profile">
-          <Col xs={5}>
+          <Col xs={5} sm={4}>
             <ProfileImageWrapper>
               <Image fluid={profile.fluid} />
             </ProfileImageWrapper>
           </Col>
-          <Col xs={12}>
+          <Col xs={12} sm={8}>
             <h2>Senior Software Engineer</h2>
             <p>
               <a href="https://github.com/omonk" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>

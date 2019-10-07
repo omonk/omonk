@@ -27,15 +27,19 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const BlogPreviewWrapper = styled(Row)`
+  margin-bottom: ${remcalc(20)};
+`;
+
 const BlogPreview = ({ frontmatter, excerpt }) => {
   const { path, title, date, image } = frontmatter;
 
   return (
-    <>
+    <BlogPreviewWrapper as="article">
       <Col xs={5} sm={3}>
-        <ImageWrapper>
-          <img src={image.publicURL} alt={`Preview graphic for ${title}`} />
-        </ImageWrapper>
+        <Link to={path}>
+          <ImageWrapper>{image && <img src={image.publicURL} alt={`Preview graphic for ${title}`} />}</ImageWrapper>
+        </Link>
       </Col>
       <Col xs={12} sm={9}>
         <article>
@@ -46,7 +50,7 @@ const BlogPreview = ({ frontmatter, excerpt }) => {
           <p>{excerpt}</p>
         </article>
       </Col>
-    </>
+    </BlogPreviewWrapper>
   );
 };
 
@@ -61,13 +65,12 @@ export default ({ data }) => {
             <h1>Blog</h1>
           </Col>
         </Row>
-        <Row as="article">
-          {blogPosts &&
-            blogPosts.length > 0 &&
-            blogPosts.map(({ node }) => {
-              return <BlogPreview {...node} key={node.id} />;
-            })}
-        </Row>
+
+        {blogPosts &&
+          blogPosts.length > 0 &&
+          blogPosts.map(({ node }) => {
+            return <BlogPreview {...node} key={node.id} />;
+          })}
       </Grid>
     </Layout>
   );

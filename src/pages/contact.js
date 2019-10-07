@@ -114,7 +114,7 @@ const Contact = ({ data }) => {
             </Col>
           ) : (
             <Col xs={12}>
-              <form netlify name="contact" netlify-honeypot="bot" onSubmit={handleSubmit}>
+              <form data-netlify="true" name="contact" netlify-honeypot="bot" onSubmit={handleSubmit}>
                 <fieldset style={{ border: 'none ' }}>
                   <Hidden>
                     <label>

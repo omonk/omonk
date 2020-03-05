@@ -10,6 +10,12 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-90709650-2',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-typography',
       options: {
         pathToConfigModule: `src/utils/typography`,

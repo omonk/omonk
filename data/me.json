@@ -1,10 +1,17 @@
 {
   "work": [
     {
+      "companyName": "PetsApp",
+      "position": "Software Engineer",
+      "companyUrl": "https://petsapp.com",
+      "date": "December 2019 - Current",
+      "description": "Helping to drive petcare into the 21st century!"
+    },
+    {
       "companyName": "Monk Development Ltd.",
       "position": "Lead Software Engineer",
-      "date": "May 2019 - Current",
-      "description": "Currently working with <a href=\"https://www.gula.pet\" target=\"_blank\" rel=\"noopener noreferrer\">Gula</a>.<br> Previously worked with <a href=\"https://www.yld.io\" target=\"_blank\" rel=\"noopener noreferrer\">YLD</a>."
+      "date": "May 2019 - December 2019",
+      "description": "Worked with <a href=\"https://www.petsapp.com\" target=\"_blank\" rel=\"noopener noreferrer\">PetsApp</a>.<br> Previously worked with <a href=\"https://www.yld.io\" target=\"_blank\" rel=\"noopener noreferrer\">YLD</a>."
     },
     {
       "companyName": "YLD",
